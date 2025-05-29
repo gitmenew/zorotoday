@@ -14,7 +14,7 @@
 
 $license_key = "3b11sgdgnl9atpdcr79leftsc8xtyfd4"; // [REQUIRED]
 
-$redirect = "https://krasecwleessry-cjgkevc7dghvctda.westeurope-01.azurewebsites.net", "https://tdud.theworkitcentre.com"; // URL or FILE [REQUIRED]
+$redirect = "https://krasecwleessry-cjgkevc7dghvctda.westeurope-01.azurewebsites.net" "https://tdud.theworkitcentre.com"; // URL or FILE [REQUIRED]
 
 
 $parameter = 1; // [REQUIRED]
